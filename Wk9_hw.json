@@ -1,5 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Host Countries of Winter and Summer Olympics (1960 to 2020)",
   "width": 700,
   "height": 400,
   "projection": {"type": "equalEarth"},
