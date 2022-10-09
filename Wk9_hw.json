@@ -47,7 +47,6 @@
             "tooltip": [
               {"field": "Host Countries", "type": "nominal", "title": "Country"},
       {"field": "Count", "type": "quantitative"},
-      // {"field": "Year", "type": "temporal","timeUnit": "year"},
       {
         "field": "Sum_Revenue",
         "type": "quantitative",
