@@ -1,88 +1,39 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Host Countries of Winter and Summer Olympics (1960 to 2020)",
+  "description": "Two vertically concatenated charts that show a histogram of precipitation in Seattle and the relationship between min and max temperature.",
+  "data": {"url": "https://raw.githubusercontent.com/Alicetheone/FIT3179/main/ne_110m.json"},
+  "transform": [{"filter": "datum.NOC === 'AUS'"}],
+  "vconcat": [
+    {
+      "title": "Host Countries of Winter and Summer Olympics (1960 to 2020)",
   "width": 700,
-  "height": 500,
-  "params": [
-    {
-      "name": "Year_selection",
-      "value": 2000,
-      "bind": {
-        "input": "range",
-        "min": 1960,
-        "max": 2016,
-        "step": 2,
-        "name": "Year:  "
-      }
-    },
-    {
-      "name": "zoom_level",
-      "value": 120,
-      "bind": {
-        "input": "range",
-        "min": 70,
-        "max": 400,
-        "step": 100,
-        "name": "Zoom: "
-      }
-    }
-  ],
-  "projection": {
-    "type": "equalEarth",
-    "scale": {"expr": "zoom_level"},
-    "rotate": [-150, 0, 0]
+  "height": 400,
+  "projection": {"type": "equalEarth"},
+  "data": {
+    "url": "https://raw.githubusercontent.com/Alicetheone/FIT3179/main/ne_110m.json",
+    "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
   },
-  "layer": [
+  "transform": [
     {
-      "data": {
-        "url": "https://raw.githubusercontent.com/Alicetheone/FIT3179/main/ne_110m.json",
-        "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
-      },
-      "transform": [
-        {
-          "calculate": "'Data is not available in ' + datum.properties.NAME",
-          "as": "note"
-        }
-      ],
-      "mark": {
-        "type": "geoshape",
-        "fill": "#ddd",
-        "stroke": "white",
-        "strokeWidth": 1
-      },
-      "encoding": {"tooltip": {"field": "note"}}
+      "lookup": "properties.NAME",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/Alicetheone/FIT3179/main/host%20cities.csv"
+        },
+        "key": "Host Countries",
+        "fields": ["Count", "Sum_Revenue"]
+      }
     },
-    {
-      "data": {
-        "url": "https://raw.githubusercontent.com/Alicetheone/FIT3179/main/FIT3179_A2.csv"
-      },
-      "transform": [
-        {
-          "lookup": "Host_Countries",
-          "from": {
-            "data": {
-              "url": "https://raw.githubusercontent.com/Alicetheone/FIT3179/main/ne_110m.json",
-              "format": {
-                "type": "topojson",
-                "feature": "ne_110m_admin_0_countries"
-              }
-            },
-            "key": "properties.NAME"
-          },
-          "as": "geo"
-        },
-        {"filter": "datum.Year == Year_selection"}
-      ],
-      "mark": {"type": "geoshape", "stroke": "#fff", "strokeWidth": 0.5},
-      "encoding": {
-        "shape": {"field": "geo", "type": "geojson"},
-        "color": {
-          "field": "Broadcast_Revenue",
-          "type": "quantitative",
-          "legend": {"format": ".2s"}
-        },
-        "tooltip": [
-      {"field": "Host_Countries", "type": "nominal", "title": "Country"},
+    {"calculate": "datum.Count + 0.1", "as": "Count of times hosting Olympic"}
+  ],
+  "mark": {"type": "geoshape","stroke":"lightgrey"},
+  "encoding": {
+    "color": {
+      "field": "Count of times hosting Olympic",
+      "type": "quantitative"
+    },
+    "tooltip": [
+      {"field": "properties.NAME", "type": "nominal", "title": "Country"},
       {"field": "Count", "type": "quantitative"},
       {
         "field": "Sum_Revenue",
@@ -90,8 +41,74 @@
         "title": "Total Revenue (in millions USD)"
       }
     ]
+  }
+    },
+    {
+      "data": {
+      "url": "https://raw.githubusercontent.com/Alicetheone/FIT3179/main/FIT3179_A2.csv"},
+      "width": 700,
+      "height": 60,
+      "mark": "line",
+      "title": "Use this line chart to filter out the data based on time",
+      "params": [
+        {
+          "name": "time_brush",
+          "select": {"type": "interval", "encodings": ["x"]}
+        }
+      ],
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "timeUnit": "year",
+          "axis": {"title": "", "format": "%Y"}
+        },
+        "y": {
+          "aggregate": "count",
+          "axis": {"tickCount": 3, "grid": false},
+          "title": "Count"
+        }
+      }
+    },
+    {
+      "data": {
+      "url": "https://raw.githubusercontent.com/Alicetheone/FIT3179/main/FIT3179_A2.csv"},
+      "width": 700,
+      "height": 400,
+      "selection":{
+        "Medal_choice" :{
+          "type":"multi",
+          "fields":["Medal"],
+          "bind":"legend"
+        }
+      },
+      "mark": "area",
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "timeUnit": "year",
+          "scale": {"domain": {"param": "time_brush"}},
+          "axis": {"title": "", "tickCount": 10, "grid": false}
+        },
+        "y": {"aggregate": "count", "field": "Medal", "type": "nominal"},
+        "color": {
+          "field": "Medal",
+          "type":"nominal",
+          "scale": {
+            "domain":[
+              "Gold",
+              "Silver",
+              "Bronze"
+            ],
+            "range": ["#fdbe85", 
+            "#fd8d3c", 
+            "#e6550d"]
+          }
+        },
+        "opacity":{
+          "condition":{"selection":"Medal_choice","value":0.6},
+          "value":0.2},
+        "legend": {"format":".1s"}
       }
     }
-  ],
-  "config": {}
+  ]
 }
