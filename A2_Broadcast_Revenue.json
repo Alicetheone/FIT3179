@@ -1,0 +1,57 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 500,
+  "height": 300,
+  "data": {
+    "url": "https://raw.githubusercontent.com/Alicetheone/FIT3179/main/FIT3179_A2.csv"
+  },
+  "layer": [
+    {
+      "mark": "bar",
+      "encoding": {
+        "x": {
+          "timeUnit": "year",
+          "field": "Year",
+          "type": "ordinal",
+          "title": "Year"
+        },
+        "y": {
+          "aggregate": "mean",
+          "field": "Broadcast_Revenue",
+          "type": "quantitative",
+          "title":"Broadcast_Revenue"
+        },
+        "tooltip": [
+          {"field": "Games", "type": "nominal", "title": "Olympic Game"},
+          {"field": "Host_Countries", "type": "nominal", "title": "Country"},
+          {
+            "field": "Broadcast_Revenue",
+            "type": "quantitative",
+            "title": "Total Revenue (in millions USD)"
+          }
+        ]
+      }
+    },
+    {
+      "mark": "rule",
+      "encoding": {
+        "y": {
+          "aggregate": "mean",
+          "field": "Broadcast_Revenue",
+          "type": "quantitative"
+        },
+        "color": {"value": "red"},
+        "size": {"value": 2},
+        "tooltip": [
+          {
+            "aggregate": "mean",
+            "field": "Broadcast_Revenue",
+            "type": "quantitative",
+            "format": ".2f"
+          }
+        ]
+      }
+    }
+  ],
+  "config": {}
+}

@@ -1,0 +1,70 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 500,
+  "height": 400,
+  "title": "",
+  "data": {
+    "url": "https://raw.githubusercontent.com/Alicetheone/FIT3179/main/FIT3179_A2.csv"
+  },
+  "concat": [
+    {
+      "title": "Australia's Gold Medal win (Female)",
+      "transform": [{"filter": "datum.Sex === 'F'"}],
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "ordinal",
+          "timeUnit": "year",
+          "title": "Year"
+        },
+        "y": {"aggregate": "count", "field": "Medal", "type": "quantitative"}
+      },
+      "layer": [
+        {"mark": "bar", "encoding": {"color": {"value": "#E8EAFA"}}},
+        {
+          "mark": "line",
+          "encoding": {
+            "color": {
+              "field": "Medal",
+              "type": "nominal",
+              "scale": {
+                "domain": ["Gold", "Silver", "Bronze"],
+                "range": ["#FFD700", "#C0C0C0", "#CD7F32"]
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "title": "Australia's Gold Medal win (Male)",
+      "transform": [{"filter": "datum.Sex === 'M'"}],
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "ordinal",
+          "timeUnit": "year",
+          "title": "Year"
+        },
+        "y": {"aggregate": "count", "field": "Medal", "type": "quantitative"}
+      },
+      "layer": [
+        {"mark": "bar", "encoding": {"color": {"value": "#E2FEF9"}}},
+        {
+          "mark": "line",
+          "encoding": {
+            "color": {
+              "field": "Medal",
+              "type": "nominal",
+              "scale": {
+                "domain": ["Gold", "Silver", "Bronze"],
+                "range": ["#FFD700", "#C0C0C0", "#CD7F32"]
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "config": {}
+}

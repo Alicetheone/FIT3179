@@ -1,0 +1,80 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/6_advanced_examples/data/earthquake_lite.csv"
+  },
+  "vconcat": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/Alicetheone/FIT3179/main/FIT3179_A2.csv"
+      },
+      "width": 700,
+      "height": 60,
+      "mark": "line",
+      "title": "Use this line chart to filter out Australia's medal win based on time",
+      "params": [
+        {
+          "name": "time_brush",
+          "select": {"type": "interval", "encodings": ["x"]}
+        }
+      ],
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "timeUnit": "year",
+          "axis": {"title": "", "format": "%Y"}
+        },
+        "y": {
+          "aggregate": "count",
+          "axis": {"tickCount": 3, "grid": false},
+          "title": "Count"
+        }
+      }
+    },
+    {
+      "title": "Australia's Medal win in Olympics games from 1960 - 2016",
+      "data": {
+        "url": "https://raw.githubusercontent.com/Alicetheone/FIT3179/main/FIT3179_A2.csv"
+      },
+      "width": 700,
+      "height": 250,
+      "selection": {
+        "Medal_choice": {"type": "multi", "fields": ["Medal"], "bind": "legend"}
+      },
+      "mark": "area",
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "timeUnit": "year",
+          "scale": {"domain": {"param": "time_brush"}},
+          "axis": {"title": "", "tickCount": 10, "grid": false}
+        },
+        "y": {"aggregate": "count", "field": "Medal", "type": "nominal"},
+        "color": {
+          "field": "Medal",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Gold", "Silver", "Bronze"],
+            "range": ["#FFD700", "#C0C0C0", "#CD7F32"]
+          }
+        },
+        "tooltip": [
+          {"field": "Games", "type": "nominal", "title": "Olympic Game"},
+          {"field": "Host_Countries", "type": "nominal", "title": "Country"},
+          {
+            "aggregate": "count",
+            "field": "Medal",
+            "type": "nominal",
+            "title": "Medal"
+          }
+        ],
+        "opacity": {
+          "condition": {"selection": "Medal_choice", "value": 0.6},
+          "value": 0.2
+        },
+        "legend": {"format": ".1s"}
+      }
+    }
+  ],
+  "config": {"title": {"font": "sans-serif", "fontSize": 14}}
+}
