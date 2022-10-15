@@ -12,16 +12,61 @@
   
 </head>
 <body>
-  
-<div id="symbol_map"></div>
+  <h1>NCT in your area</h1>
+
+  <h2>NCT</h2>
+  <p>
+    <div id="symbol_map"></div>
 
 <script type="text/javascript">
 
-  var spec2 = "A2.json";
+  var spec2 = "A2_worldmap.json";
   vegaEmbed('#symbol_map', spec2).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
 </script>
+</p>
 
+
+<h2>NCTDREAM</h2>
+<p>
+  <div id="Broadcast_Revenue"></div>
+
+<script type="text/javascript">
+
+var spec2 = "A2_Broadcast_Revenue.json";
+vegaEmbed('#Broadcast_Revenue', spec2).then(function(result) {
+  // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+}).catch(console.error);
+</script>
+</p>
+
+  <h2>NCT127</h2>
+  <p>
+    <div id="Medal_brush"></div>
+
+<script type="text/javascript">
+
+  var spec2 = "A2_Medal_brushing.json";
+  vegaEmbed('#Medal_brush', spec2).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+</script>
+  </p>
+
+  <h2>WAYV</h2>
+  <p>
+    <div id="medal_gender"></div>
+
+<script type="text/javascript">
+
+  var spec2 = "A2_medal_gender.json";
+  vegaEmbed('#medal_gender', spec2).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+</script>
+  </p>
+
+  
 </body>
 </html>
