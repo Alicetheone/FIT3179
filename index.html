@@ -21,7 +21,7 @@
 <script type="text/javascript">
 
   var spec2 = "A2_worldmap.json";
-  vegaEmbed('#symbol_map', spec2).then(function(result) {
+  vegaEmbed('#symbol_map', spec2, { "actions": false }).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
 </script>
@@ -35,7 +35,7 @@
 <script type="text/javascript">
 
 var spec2 = "A2_Broadcast_Revenue.json";
-vegaEmbed('#Broadcast_Revenue', spec2).then(function(result) {
+vegaEmbed('#Broadcast_Revenue', spec2,{ "actions": false }).then(function(result) {
   // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
 }).catch(console.error);
 </script>
@@ -48,7 +48,7 @@ vegaEmbed('#Broadcast_Revenue', spec2).then(function(result) {
 <script type="text/javascript">
 
   var spec2 = "A2_Medal_brushing.json";
-  vegaEmbed('#Medal_brush', spec2).then(function(result) {
+  vegaEmbed('#Medal_brush', spec2, { "actions": false }).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
 </script>
@@ -61,7 +61,7 @@ vegaEmbed('#Broadcast_Revenue', spec2).then(function(result) {
 <script type="text/javascript">
 
   var spec2 = "A2_medal_gender.json";
-  vegaEmbed('#medal_gender', spec2).then(function(result) {
+  vegaEmbed('#medal_gender', spec2, { "actions": false }).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
 </script>
