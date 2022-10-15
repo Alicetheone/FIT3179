@@ -1,3 +1,16 @@
+h1{
+	font-family: 'Source Sans Pro', sans-serif;
+	text-align: center;
+	font-size: 50px;
+}
+
+h2{
+	font-family: 'Source Sans Pro', sans-serif;
+	text-align: center;
+	font-size: 40px;
+}
+
+
 #symbol_map {
 	top:100px;
 	bottom: 100px; 
@@ -5,4 +18,10 @@
 	right: 100px;
 	/*height: 1000px;
 	width: 800px;*/
+}
+
+#c-align {
+    text-align: center;
+    border: 1px solid black;
+    /* to set the border*/
 }
