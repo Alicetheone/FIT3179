@@ -8,7 +8,7 @@
   },
   "vconcat": [
     {
-      "title": "Australia's Gold Medal win (Female)",
+      "title": "Australia's Medal win (Female)",
       "transform": [{"filter": "datum.Sex === 'F'"}],
       "encoding": {
         "x": {
@@ -37,7 +37,7 @@
       ]
     },
     {
-      "title": "Australia's Gold Medal win (Male)",
+      "title": "Australia's Medal win (Male)",
       "transform": [{"filter": "datum.Sex === 'M'"}],
       "encoding": {
         "x": {
