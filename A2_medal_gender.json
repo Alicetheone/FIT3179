@@ -1,12 +1,12 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 500,
+  "width": 700,
   "height": 400,
   "title": "",
   "data": {
     "url": "https://raw.githubusercontent.com/Alicetheone/FIT3179/main/FIT3179_A2.csv"
   },
-  "concat": [
+  "vconcat": [
     {
       "title": "Australia's Gold Medal win (Female)",
       "transform": [{"filter": "datum.Sex === 'F'"}],

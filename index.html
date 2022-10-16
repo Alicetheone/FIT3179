@@ -1,21 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>Olympics</title>
   <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
   <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
   
+    <!-- Import pure.css -->
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+    integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
   
-  <!-- CSS file -->
-  <link rel="stylesheet" type="text/css" href="style.css" media="all">
+    <!-- CSS file -->
+    <link rel="stylesheet" type="text/css" href="style_new.css" media="all">
   
 </head>
 <body>
+
+  <div class="page">
+
   <h1>NCT in your area</h1>
 
   <h2>NCT</h2>
-  <p>
+  <p style = "text-align: center;">
     <div id="symbol_map"></div>
 
 <script type="text/javascript">
@@ -26,20 +39,29 @@
   }).catch(console.error);
 </script>
 </p>
+<p>The first column contains text and the second column contains a visualisation.
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+  dolore magna aliqua. Massa sapien faucibus et molestie ac feugiat sed. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+  dolore magna aliqua. Massa sapien faucibus et molestie ac feugiat sed. </p>
 
 
-<h2>NCTDREAM</h2>
-<p>
-  <div id="Broadcast_Revenue"></div>
+<!-- pure grid group -->
+<div class="pure-g">
+  <div class="pure-u-1-2">
+    <div class="description description-left">
+      <h2>NCTDREAM</h2>
+      <p>The first column contains text and the second column contains a visualisation.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+        dolore magna aliqua. Massa sapien faucibus et molestie ac feugiat sed. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+        dolore magna aliqua. Massa sapien faucibus et molestie ac feugiat sed. </p>
+    </div>
+  </div>
+  <div class="pure-u-1-2">
+    <div id="vis2" class="vis-container"></div>
+  </div>
 
-<script type="text/javascript">
-
-var spec2 = "A2_Broadcast_Revenue.json";
-vegaEmbed('#Broadcast_Revenue', spec2,{ "actions": false }).then(function(result) {
-  // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-}).catch(console.error);
-</script>
-</p>
+</div>
+<!-- end pure grid group -->
 
   <h2>NCT127</h2>
   <p>
@@ -53,20 +75,51 @@ vegaEmbed('#Broadcast_Revenue', spec2,{ "actions": false }).then(function(result
   }).catch(console.error);
 </script>
   </p>
+  <p>The first column contains text and the second column contains a visualisation.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+    dolore magna aliqua. Massa sapien faucibus et molestie ac feugiat sed. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+    dolore magna aliqua. Massa sapien faucibus et molestie ac feugiat sed. </p>
 
-  <h2>WAYV</h2>
-  <p>
-    <div id="medal_gender"></div>
 
-<script type="text/javascript">
+      <!-- pure grid group -->
+      <div class="pure-g">
+        <div class="pure-u-2-3">
+          <div id="vis4" class="vis-container"></div>
+        </div>
+        <div class="pure-u-1-3">
+          <div class="description description-right">
+            <h2>First and Second Columns Combined</h2>
+            <p>The first and second columns are combined. Lorem ipsum dolor sit amet,
+              consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa sapien
+              faucibus et molestie ac feugiat sed. Egestas purus viverra accumsan in nisl.</p>
+          </div>
+        </div>
+  
+      </div>
+      <!-- end pure grid group -->
 
-  var spec2 = "A2_medal_gender.json";
-  vegaEmbed('#medal_gender', spec2, { "actions": false }).then(function(result) {
-    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-  }).catch(console.error);
-</script>
-  </p>
+  </div>  
 
+  <script type="text/javascript">
+    var specVis1 = "A2_worldmap.json";
+    var specVis2 = "A2_Broadcast_Revenue.json";
+    var specVis3 = "A2_Medal_brushing.json";
+    var specVis4 = "A2_medal_gender.json";
+
+    vegaEmbed('#vis1', specVis1, { "actions": false });
+
+    vegaEmbed('#vis2', specVis2, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis3', specVis3, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis4', specVis4, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+  </script>
   
 </body>
 </html>

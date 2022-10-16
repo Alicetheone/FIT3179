@@ -1,7 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 500,
-  "height": 300,
+  "title":"Broadcast Revenue host countries have earned by hosting Olympics",
+  "width": 400,
+  "height": 200,
   "data": {
     "url": "https://raw.githubusercontent.com/Alicetheone/FIT3179/main/FIT3179_A2.csv"
   },
@@ -19,7 +20,7 @@
           "aggregate": "mean",
           "field": "Broadcast_Revenue",
           "type": "quantitative",
-          "title":"Broadcast_Revenue"
+          "title":"Broadcast Revenue"
         },
         "tooltip": [
           {"field": "Games", "type": "nominal", "title": "Olympic Game"},
