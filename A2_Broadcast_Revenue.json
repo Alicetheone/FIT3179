@@ -25,6 +25,7 @@
         "tooltip": [
           {"field": "Games", "type": "nominal", "title": "Olympic Game"},
           {"field": "Host_Countries", "type": "nominal", "title": "Country"},
+          {"field": "City", "type": "nominal", "title": "City"},
           {
             "field": "Broadcast_Revenue",
             "type": "quantitative",

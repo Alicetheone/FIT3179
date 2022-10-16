@@ -32,7 +32,7 @@
       }
     },
     {
-      "title": "Australia's Medal win in Olympics games from 1960 - 2016",
+      "title": "",
       "data": {
         "url": "https://raw.githubusercontent.com/Alicetheone/FIT3179/main/FIT3179_A2.csv"
       },
@@ -41,7 +41,7 @@
       "selection": {
         "Medal_choice": {"type": "multi", "fields": ["Medal"], "bind": "legend"}
       },
-      "mark": "area",
+      "mark": "bar",
       "encoding": {
         "x": {
           "field": "Year",
@@ -61,6 +61,7 @@
         "tooltip": [
           {"field": "Games", "type": "nominal", "title": "Olympic Game"},
           {"field": "Host_Countries", "type": "nominal", "title": "Country"},
+          {"field": "City", "type": "nominal", "title": "City"},
           {
             "aggregate": "count",
             "field": "Medal",
