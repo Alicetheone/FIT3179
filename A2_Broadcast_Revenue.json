@@ -29,7 +29,7 @@
           {
             "field": "Broadcast_Revenue",
             "type": "quantitative",
-            "title": "Total Revenue (in millions USD)"
+            "title": "Broadcast Revenue (in millions USD)"
           }
         ]
       }
