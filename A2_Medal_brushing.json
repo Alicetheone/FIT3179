@@ -11,7 +11,7 @@
       "width": 700,
       "height": 60,
       "mark": "line",
-      "title": "Use this line chart to filter out Australia's medal win based on time",
+      "title": "Drag and drop the chart below to select the years of Australia's medal wins",
       "params": [
         {
           "name": "time_brush",

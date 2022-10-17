@@ -20,7 +20,7 @@
           "aggregate": "mean",
           "field": "Broadcast_Revenue",
           "type": "quantitative",
-          "title":"Broadcast Revenue"
+          "title":"Broadcast Revenue (in millions USD)"
         },
         "tooltip": [
           {"field": "Games", "type": "nominal", "title": "Olympic Game"},

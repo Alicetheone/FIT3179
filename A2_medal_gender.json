@@ -49,7 +49,7 @@
         "y": {"aggregate": "count", "field": "Medal", "type": "quantitative"}
       },
       "layer": [
-        {"mark": "bar", "encoding": {"color": {"value": "#E2FEF9"}}},
+        {"mark": "bar", "encoding": {"color": {"value": "#BFD9D9"}}},
         {
           "mark": "line",
           "encoding": {
